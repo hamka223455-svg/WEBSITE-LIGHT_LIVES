@@ -444,16 +444,23 @@
             document.getElementById('auth-error').innerText = "";
         }
 
-        function login() {
-    let u = document.getElementById('u').value;
-    let p = document.getElementById('p').value;
+        function loginUser() {
+    const username = document.getElementById('username-input').value.trim();
+    const password = document.getElementById('password-input').value.trim();
+
+    // 1. Simpan ke LocalStorage agar auto-login bisa bekerja
+    localStorage.setItem('user', username);
+
+    // 2. Lanjutkan kode cek database kamu yang lama (biarkan kode `if` yang asli tetap ada di bawahnya)
+    if (!username || !password) {
+        document.getElementById('auth-error').innerText = "Mohon isi semua field!";
+        return;
+    }
     
-    // Simpan ke memori browser supaya dia ingat
-    localStorage.setItem('user', u);
+    // ... (biarkan sisa kode loginUser kamu yang lama tetap ada di sini) ...
     
-    // --- TAMBAHKAN INI ---
+    // 3. TAMBAHKAN INI DI AKHIR FUNGSI (setelah sukses login)
     location.reload(); 
-    // --- FUNGSI INI AKAN MEMAKSA WEB REFRESH DAN AUTO-LOGIN ---
         }
         
 
