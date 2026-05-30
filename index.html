@@ -444,14 +444,18 @@
             document.getElementById('auth-error').innerText = "";
         }
 
-        function loginUser() {
-            const username = document.getElementById('username-input').value.trim();
-            const password = document.getElementById('password-input').value.trim();
-            
-            if (!username || !password) {
-                document.getElementById('auth-error').innerText = "Mohon isi semua field!";
-                return;
-            }
+        function login() {
+    let u = document.getElementById('u').value;
+    let p = document.getElementById('p').value;
+    
+    // Simpan ke memori browser supaya dia ingat
+    localStorage.setItem('user', u);
+    
+    // --- TAMBAHKAN INI ---
+    location.reload(); 
+    // --- FUNGSI INI AKAN MEMAKSA WEB REFRESH DAN AUTO-LOGIN ---
+        }
+        
 
             // Check Owner Login
             if (username === OWNER_USERNAME && password === OWNER_PASSWORD) {
