@@ -160,9 +160,14 @@
 
     <!-- PRELOADER -->
     <div id="preloader">
-        <div class="spinner"></div>
-        <p style="margin-top: 10px;">LOADING LIGHT_LIVE...</p>
+    <div class="spinner"></div>
+    <p style="margin-top: 10px;">LOADING LIGHT_LIVE...</p>
+    <button onclick="document.getElementById('preloader').classList.add('hidden'); document.getElementById('auth-screen').classList.remove('hidden');" 
+            style="margin-top:20px; background:#222; border:1px solid #00f2ff; color:#00f2ff; padding:8px 15px; cursor:pointer; border-radius:5px;">
+        LEWATI LOADING
+    </button>
     </div>
+    
 
     <!-- AUTH SCREEN -->
     <div id="auth-screen" class="auth-container hidden">
