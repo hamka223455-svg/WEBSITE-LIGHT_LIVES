@@ -491,29 +491,34 @@
         }
 
         function login() {
-            const user = document.getElementById('login-user').value;
-            const pass = document.getElementById('login-pass').value;
+    const user = document.getElementById('login-user').value;
+    const pass = document.getElementById('login-pass').value;
+    
+    // Ini sensor buat tahu kodingan kebaca atau tidak
+    alert("Tombol Login diklik! Mencoba login sebagai: " + user); 
 
-            if(!user || !pass) return showToast('Isi semua data!', '#ff2a2a');
-
-            db.ref('users/' + user).once('value', snapshot => {
-                if(snapshot.exists()) {
-                    const data = snapshot.val();
-                    if(data.password === pass) {
-                        if(data.status === 'banned') {
-                            showToast('AKUN KAMU DIBANNED! Hubungi owner.', '#ff2a2a');
-                            return;
-                        }
-                        currentUser = { username: user, ...data };
-                        initDashboard();
-                    } else {
-                        showToast('Password salah!', '#ff2a2a');
-                    }
-                } else {
-                    showToast('User tidak ditemukan!', '#ff2a2a');
-                }
-            });
+    if(!user || !pass) {
+        alert("Isi username dan password!");
+        return;
+    }
+    
+    // Cek Firebase
+    db.ref('users/' + user).once('value', snapshot => {
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            if (data.password === pass) {
+                alert("Password benar! Masuk ke Dashboard...");
+                currentUser = { username: user, ...data };
+                initDashboard();
+            } else {
+                alert("Password salah!");
+            }
+        } else {
+            alert("Username tidak ditemukan!");
         }
+    });
+        }
+        
 
         function logout() {
             location.reload();
