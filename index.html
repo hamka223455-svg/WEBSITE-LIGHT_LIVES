@@ -316,7 +316,7 @@
 
         async function register() {
             const user = document.getElementById('reg-username').value.trim();
-            const pass = document.getElementById('reg-pass').value.trim();
+            const pass = document.getElementById('reg-password').value.trim();
             const confirm = document.getElementById('reg-confirm-password').value.trim();
 
             if(!user || !pass || !confirm) { alert('Mohon isi semua field!'); return; }
@@ -366,7 +366,7 @@
 
                 if(userData) {
                     currentUser = { uid: uid, username: userData.username };
-                    await db.ref('users/' + uid + '/lastLogin').set(new Date().toISOString());
+                    await db.ref('users/' + uid + '/lastLogin').set(new Date().toISOString());qaa
                     showApp();
                 } else {
                     alert('Data user tidak ditemukan.');
